@@ -56,6 +56,11 @@ class MavenSettings {
     // Add Typesafe repo
     enhancedRepos += TYPESAFE
 
+    // Add Sonatype, which holds latest Lift's jars
+    enhancedRepos += SONATYPE_SNAPSHOT
+    enhancedRepos += SONATYPE
+
+
     if (settings.getMirrors.size() == 0)
       return enhancedRepos ++ List()
 
@@ -90,6 +95,12 @@ object MavenSettings {
 
   private val TYPESAFE = new RemoteRepository(
     "typesafe", "default", "http://repo.typesafe.com/typesafe/maven-releases")
+
+  private val SONATYPE_SNAPSHOT = new RemoteRepository(
+    "sonatype-snapshot", "default", "http://oss.sonatype.org/content/repositories/snapshots")
+
+  private val SONATYPE = new RemoteRepository(
+    "sonatype", "default", "http://oss.sonatype.org/content/repositories/releases")
 
   private val ALT_USER_SETTINGS_XML_LOCATION = "org.apache.maven.user-settings"
 
